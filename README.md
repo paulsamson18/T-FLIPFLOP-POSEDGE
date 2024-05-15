@@ -1,4 +1,4 @@
-# T-FLIPFLOP-POSEDGE
+ā# T-FLIPFLOP-POSEDGE
 
 **AIM:**
 
@@ -30,13 +30,51 @@ From the above characteristic table, we can directly write the next state equati
 
 /* write all the steps invloved */
 
+~~~
+1.Initialize the shift register to a known state (e.g., all zeros).
+
+2.Input a bit serially into the shift register.
+
+3.Shift the contents of the register one position to the right (or left).
+
+4.Output the shifted bit from the last stage of the register.
+
+5.Repeat steps 2-4 for each bit you want to input and shift.
+~~~
+
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by:paulsamson RegisterNumber:212222230104
 */
+~~~
+module Tflipflop( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin // for synchronous reset
+  //WRITE THE CONDITION OF TOGGLE FLIPFLOP HERE WITH RESET AND 
+  //IMPLEMENT THE T LOGIC BY CONDITIONAL OPERATOR
+if(!rst_n)
+q<=0;
+else 
+begin
+q<=(t?~q:q);
+end
+end
+assign q_bar = ~q;
+endmodule
 
+Developed by : Paulsamson
+~~~
 **RTL LOGIC FOR FLIPFLOPS**
+
+
+![329697108-61fd3809-f780-4197-8567-a2bc1e0d7e74](https://github.com/04Varsha/T-FLIPFLOP-POSEDGE/assets/149035374/dc18e2ee-f2c9-47c5-a373-bbea78e0ff03)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![329697143-2a9c5ea9-5f76-41ed-ad92-eaa4d4bfccc0](https://github.com/04Varsha/T-FLIPFLOP-POSEDGE/assets/149035374/3320aeff-f20e-477b-af67-a641267cbf27)
+
 **RESULTS**
+Thus the program executed successfully.
